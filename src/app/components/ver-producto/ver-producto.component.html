@@ -1,0 +1,18 @@
+<div class="title">
+    <h1>Ver Producto</h1>
+</div>
+<app-spinner *ngIf="loading"></app-spinner>
+<div *ngIf="producto != null" class="container">
+    <mat-card class="card">
+        <mat-card-title>{{ producto.nombre }}</mat-card-title>
+        <mat-card-content>
+            <p><strong>ID:</strong> {{ producto.idproducto }} </p>    
+            <p><strong>Categogia:</strong> {{ producto.id.descripcion}}</p>        
+            <p><strong>Precio:</strong> {{ producto.precio_venta }}</p>
+            <p><strong>Stock:</strong> {{ producto.stock }}  </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button routerLink="/listProductos" mat-raised-button>Volver</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

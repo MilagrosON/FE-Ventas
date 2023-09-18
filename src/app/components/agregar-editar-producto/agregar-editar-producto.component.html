@@ -1,0 +1,47 @@
+<div class="title">
+    <h1>{{ operacion }} Producto</h1>
+</div>
+<app-spinner *ngIf="loading"></app-spinner>
+<div class="container" style="width: 800px;">
+    <mat-card class="card">
+        <mat-card-subtitle>
+            Datos del producto
+        </mat-card-subtitle>
+        <form [formGroup]="form" (ngSubmit)="agregarEditarProducto()">
+            <mat-grid-list cols="12" rowHeight="90px" rowWidth="300px">
+                <mat-grid-tile [colspan]="12" [rowspan]="1">
+                    <mat-form-field appearance="outline" style="margin-right: 20px; width: 500px;">
+                        <mat-label>Nombre</mat-label>
+                        <input formControlName="nombre" matInput autocomplete="off">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="12">                   
+                    <mat-form-field appearance="outline" style="margin-right: 20px; width: 500px;">
+                        <mat-label>Categoría</mat-label>
+                        <mat-select formControlName="id">
+                          <mat-option *ngFor="let cat of categorias" [value]="cat.idcategoria" autocapitalize="off">
+                            {{cat.descripcion}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="12">
+                    <mat-form-field appearance="outline" style="margin-right: 270px; width: 250px;" >
+                        <mat-label>Precio Venta</mat-label>
+                        <input  type="number" formControlName="precio_venta" matInput autocomplete="off">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="12">
+                    <mat-form-field appearance="outline" style="margin-right: 270px; width: 250px;">
+                        <mat-label>Stock</mat-label>
+                        <input type="number" formControlName="stock" matInput autocomplete="off">
+                    </mat-form-field> 
+                </mat-grid-tile>               
+                <mat-grid-tile [colspan]="12">
+                    <button [disabled]="form.invalid" type="submit" class="btnAceptar" mat-raised-button color="primary">Aceptar</button>
+                    <button mat-raised-button routerLink="/listProductos" style="margin-left: 10px;">Volver</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </mat-card>
+</div>
